@@ -1,5 +1,6 @@
 import bot from './assets/bot.svg';
 import user from './assets/user.svg';
+import speaker from './assets/speaker.svg';
 
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
@@ -40,10 +41,18 @@ function generateUniqueId() {
 }
 
 function chatStrip(isAi, value, uniqueId) {
+  // const msg = new SpeechSynthesisUtterance(value);
+  // window.speechSynthesis.speak(msg);
   return (
     `
     <div class="wrapper ${isAi && 'ai'}">
       <div class="chat">
+      <div class="${isAi ? 'profile' : 'profile hide'}">
+                <img
+                  src="${speaker}"
+                  alt="speaker"
+                />
+          </div>
           <div class="profile">
                 <img
                   src="${isAi ? bot : user}"
@@ -80,6 +89,16 @@ const handleSubmit = async (e) => {
 
   //fetch data from server -> bot's response
 
+  // const response = await fetch('http://localhost:5000', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   },
+  //   body: JSON.stringify({
+  //     prompt: data.get('prompt')
+  //   })
+  // })
+
   const response = await fetch('https://rodex-3w2s.onrender.com', {
     method: 'POST',
     headers: {
@@ -97,6 +116,8 @@ const handleSubmit = async (e) => {
     const parsedData = data.bot.trim();
 
     typeText(messageDiv, parsedData);
+    const msg = new SpeechSynthesisUtterance(parsedData);
+    window.speechSynthesis.speak(msg);
   } else {
     const err = await response.text();
     messageDiv.innerHTML = "Something went wrong";

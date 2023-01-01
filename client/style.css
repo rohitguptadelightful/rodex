@@ -86,6 +86,10 @@ body {
   object-fit: contain;
 }
 
+.hide{
+  visibility: hidden;
+}
+
 .message {
   flex: 1;
 
