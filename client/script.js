@@ -1,6 +1,5 @@
 import bot from './assets/bot.svg';
 import user from './assets/user.svg';
-import speaker from './assets/speaker.svg';
 
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
@@ -41,18 +40,10 @@ function generateUniqueId() {
 }
 
 function chatStrip(isAi, value, uniqueId) {
-  // const msg = new SpeechSynthesisUtterance(value);
-  // window.speechSynthesis.speak(msg);
   return (
     `
     <div class="wrapper ${isAi && 'ai'}">
       <div class="chat">
-      <div class="${isAi ? 'profile' : 'profile hide'}">
-                <img
-                  src="${speaker}"
-                  alt="speaker"
-                />
-          </div>
           <div class="profile">
                 <img
                   src="${isAi ? bot : user}"
