@@ -10,16 +10,18 @@
 </head>
 
 <body>
-  <div>
-    <img src="assets/send.svg" alt="send"/>
-    <h1>Ask John</h1>
-  </div>
-  <p>Ask Anything to John...</p>
+  <header>
+    <div class="heading">
+      <img src="assets/bot.svg" alt="bot" />
+      <h1>Ask John</h1>
+    </div>
+    <p>Ask Anything to John...</p>
+  </header>
   <div id="app">
     <div id="chat_container"></div>
     <form>
       <textarea name="prompt" rows="1" cols="1" placeholder="Ask John..."></textarea>
-      <button type="submit"><img src="assets/send.svg" alt="send"/></button>
+      <button type="submit"><img src="assets/send.svg" alt="send" /></button>
     </form>
   </div>
   <script type="module" src="script.js"></script>

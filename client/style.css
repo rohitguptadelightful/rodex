@@ -11,6 +11,26 @@ body {
   background: #343541;
 }
 
+header {
+  text-align: center;
+  color: #fff;
+}
+header h1{
+  margin: 10px 0px 5px 5px;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+}
+
+header img {
+  width: 36px;
+  height: 36px;
+  border-radius: 5px;
+  margin: 10px 5px 5px 0px;
+}
+
 #app {
   width: 100vw;
   height: 100vh;
@@ -86,7 +106,7 @@ body {
   object-fit: contain;
 }
 
-.hide{
+.hide {
   visibility: hidden;
 }
 
