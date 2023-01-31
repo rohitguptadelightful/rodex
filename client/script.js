@@ -106,9 +106,7 @@ const handleSubmit = async (e) => {
     const data = await response.json();
     const parsedData = data.bot.trim();
 
-    typeText(messageDiv, parsedData);
-    const msg = new SpeechSynthesisUtterance(parsedData);
-    window.speechSynthesis.speak(msg);
+    typeText(messageDiv, parsedData); 
   } else {
     const err = await response.text();
     messageDiv.innerHTML = "Something went wrong";
@@ -122,3 +120,7 @@ form.addEventListener('keyup', (e) => {
     handleSubmit(e);
   }
 })
+
+window.onload = function() {
+  document.getElementById("textarea").focus();
+};
