@@ -106,7 +106,10 @@ const handleSubmit = async (e) => {
     const data = await response.json();
     const parsedData = data.bot.trim();
 
-    typeText(messageDiv, parsedData); 
+    typeText(messageDiv, parsedData);
+    const speech = new SpeechSynthesisUtterance();
+    speech.text(parsedData)
+    speechSynthesis.speak(speech); 
   } else {
     const err = await response.text();
     messageDiv.innerHTML = "Something went wrong";
