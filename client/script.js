@@ -5,6 +5,7 @@ const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
 const mic = document.getElementById('#mic');
 const textArea = document.getElementById('#textarea');
+var isListening = false;
 
 let loadInterval;
 
@@ -136,7 +137,15 @@ if ('webkitSpeechRecognition' in window) {
   recognition.interimResults = true;
 
   mic.addEventListener('click', () => {
-    recognition.start();
+    if (isListening) {
+      recognition.stop();
+      isListening = false;
+      mic.src = "assets/micoff.svg"
+    } else {
+      recognition.start();
+      isListening = true;
+      mic.src = "assets/mic.svg"
+    }
   });
 
   recognition.addEventListener('result', (event) => {
