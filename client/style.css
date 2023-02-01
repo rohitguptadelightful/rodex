@@ -172,8 +172,12 @@ button {
   cursor: pointer;
   background: transparent;
 }
+form div{
 
-form img {
+}
+.icon {
   width: 30px;
   height: 30px;
+  vertical-align: middle;
+  margin: 5px 0 5px 0;
 }

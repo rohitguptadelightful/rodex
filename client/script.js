@@ -3,6 +3,8 @@ import user from './assets/user.svg';
 
 const form = document.querySelector('form');
 const chatContainer = document.querySelector('#chat_container');
+const mic = document.getElementById('#mic');
+const textArea = document.getElementById('#textarea');
 
 let loadInterval;
 
@@ -123,6 +125,30 @@ form.addEventListener('keyup', (e) => {
   }
 })
 
-window.onload = function() {
-  document.getElementById("textarea").focus();
+window.onload = function () {
+  document.getElementById("#textarea").focus();
 };
+
+
+if ('webkitSpeechRecognition' in window) {
+  const recognition = new webkitSpeechRecognition();
+  recognition.countinuous = true;
+  recognition.interimResults = true;
+
+  mic.addEventListener('click', () => {
+    recognition.start();
+  });
+
+  recognition.addEventListener('result', (event) => {
+    const transcript = event.results[0][0].transcript;
+    textArea.value += transcript;
+  });
+
+  recognition.addEventListener('end', () => {
+    recognition.start();
+  });
+} else {
+  mic.style.display = 'none';
+  textArea.value = 'speech recognition not supported by your browser.';
+}
+
